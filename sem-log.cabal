@@ -1,0 +1,81 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.36.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           sem-log
+version:        0.1.0.0
+synopsis:       Logging frontend for Polysemy
+description:    See https://hackage.haskell.org/package/sem-log/docs/Sem-Log.html
+author:         James Burton
+maintainer:     James Burton
+copyright:      2024 Functional Core
+license:        BSD-2-Clause-Patent
+license-file:   LICENSE
+build-type:     Simple
+
+library
+  exposed-modules:
+      Logger.Effects
+      Logger.Formatter
+      Logger.Settings
+      Logger.Types
+      Logger.Utils
+      SemLog
+  other-modules:
+      Core
+  hs-source-dirs:
+      lib
+  default-extensions:
+      BlockArguments
+      DataKinds
+      DefaultSignatures
+      DeriveAnyClass
+      DerivingStrategies
+      DuplicateRecordFields
+      FunctionalDependencies
+      GADTs
+      ImportQualifiedPost
+      LambdaCase
+      MultiWayIf
+      NoImplicitPrelude
+      OverloadedRecordDot
+      OverloadedStrings
+      PartialTypeSignatures
+      PatternSynonyms
+      QuasiQuotes
+      TemplateHaskell
+      TypeFamilies
+      TypeFamilyDependencies
+  ghc-options: -Wall -O2 -flate-specialise -fspecialise-aggressively -fplugin=Polysemy.Plugin
+  build-depends:
+      aeson
+    , base ==4.*
+    , envy
+    , incipit
+    , polysemy
+    , polysemy-log
+    , polysemy-plugin
+    , text
+    , time
+  default-language: GHC2021
+
+test-suite sem-log-test
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  other-modules:
+      SemLog.Test.NameTest
+      Paths_sem_log
+  autogen-modules:
+      Paths_sem_log
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -O2 -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base ==4.*
+    , hedgehog >=1.1 && <1.5
+    , sem-log
+    , tasty ==1.4.*
+    , tasty-hedgehog >=1.3 && <1.5
+  default-language: GHC2021
