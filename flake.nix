@@ -23,7 +23,7 @@
     };
 
     cabal = {
-      license = "BSD-2-Clause-Patent";
+      license = "MIT";
       license-file = "LICENSE";
       author = "James Burton";
       copyright = "2024 Functional Core";
